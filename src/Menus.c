@@ -2731,7 +2731,7 @@ static cc_bool TexPackOverlay_IsAlways(void* screen, void* w) {
 static void TexPackOverlay_YesClick(void* screen, void* widget) {
 	struct TexPackOverlay* s = (struct TexPackOverlay*)screen;
 	TexturePack_Extract(&s->url);
-	if (TexPackOverlay_IsAlways(s, widget)) TextureCache_Accept(&s->url);
+	if (TexPackOverlay_IsAlways(s, widget)) TextureUrls_Accept(&s->url);
 	Gui_Remove((struct Screen*)s);
 }
 
@@ -2744,7 +2744,7 @@ static void TexPackOverlay_NoClick(void* screen, void* widget) {
 
 static void TexPackOverlay_ConfirmNoClick(void* screen, void* b) {
 	struct TexPackOverlay* s = (struct TexPackOverlay*)screen;
-	if (s->alwaysDeny) TextureCache_Deny(&s->url);
+	if (s->alwaysDeny) TextureUrls_Deny(&s->url);
 	Gui_Remove((struct Screen*)s);
 }
 
